@@ -1,0 +1,1 @@
+ Basic Spring Portlet [test]
