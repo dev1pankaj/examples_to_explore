@@ -11,9 +11,9 @@
 		<org.springframework-version>3.2.2.RELEASE</org.springframework-version>
 		<liferay.version>6.1.20</liferay.version>
 		<liferay.maven.plugin.version>6.0.3</liferay.maven.plugin.version>
-		<liferay.auto.deploy.dir>D:\projects\HPCBO\runtime\liferay-portal-6.1.20-ee-ga2\tomcat-7.0.25\webapps</liferay.auto.deploy.dir>
-		<liferay.app.server.lib.global.dir>D:\projects\HPCBO\runtime\liferay-portal-6.1.20-ee-ga2\tomcat-7.0.25\lib\ext</liferay.app.server.lib.global.dir>
-		<liferay.app.server.portal.dir>D:\projects\HPCBO\runtime\liferay-portal-6.1.20-ee-ga2\tomcat-7.0.25\webapps\ROOT</liferay.app.server.portal.dir>
+		<liferay.auto.deploy.dir>D:\projects\liferay-portal-6.1.20-ee-ga2\tomcat-7.0.25\webapps</liferay.auto.deploy.dir>
+		<liferay.app.server.lib.global.dir>D:\projects\liferay-portal-6.1.20-ee-ga2\tomcat-7.0.25\lib\ext</liferay.app.server.lib.global.dir>
+		<liferay.app.server.portal.dir>D:\projects\liferay-portal-6.1.20-ee-ga2\tomcat-7.0.25\webapps\ROOT</liferay.app.server.portal.dir>
 		<org.springframework.batch-version>2.2.0.RELEASE</org.springframework.batch-version>
 	</properties>
 	<build>
