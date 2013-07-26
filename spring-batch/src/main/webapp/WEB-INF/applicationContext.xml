@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/batch"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/batch 
+						http://www.springframework.org/schema/batch/spring-batch.xsd
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+						http://www.springframework.org/schema/util 
+						http://www.springframework.org/schema/util/spring-util-3.0.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						http://www.springframework.org/schema/data/mongo
+          				http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd
+          				http://www.springframework.org/schema/mvc 
+          				http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+          				http://www.springframework.org/schema/jdbc
+          				http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd">
+	<beans:bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="classpath:/batch.properties" p:ignoreUnresolvablePlaceholders="true" />
+
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" p:driverClassName="${dataSource.driverClassName}"
+		p:username="${dataSource.username}" p:password="${dataSource.password}"
+		p:url="${dataSource.url}" />
+
+	<beans:bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource" />
+
+	<beans:bean id="jobRegistry"
+		class="org.springframework.batch.core.configuration.support.MapJobRegistry" />
+
+	<beans:bean id="jobLauncher"
+		class="org.springframework.batch.core.launch.support.SimpleJobLauncher"
+		p:jobRepository-ref="jobRepository" />
+
+	<beans:bean id="jobRegistryBeanPostProcessor"
+		class="org.springframework.batch.core.configuration.support.JobRegistryBeanPostProcessor"
+		p:jobRegistry-ref="jobRegistry" />
+
+	<beans:bean id="jobRepository"
+		class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean"
+		p:dataSource-ref="dataSource" p:transactionManager-ref="transactionManager" />
+
+	<beans:bean id="xmlFileReader"
+		class="org.springframework.batch.item.xml.StaxEventItemReader"
+		p:fragmentRootElementName="user" p:resource="classpath:/users.xml"
+		p:unmarshaller-ref="unmarshaller">
+	</beans:bean>
+
+	<beans:bean id="unmarshaller"
+		class="org.springframework.oxm.castor.CastorMarshaller">
+		<beans:property name="mappingLocation" value="classpath:/userMapping.xml" />
+	</beans:bean>
+	<beans:bean id="jdbcItemWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter" p:assertUpdates="true"
+	p:dataSource-ref="dataSource">
+		<beans:property name="sql">
+		<beans:value>
+			<![CDATA[
+			insert into user_(
+			FIRST_NAME, LAST_NAME, COMPANY, ADDRESS)
+			values (:firstName, :lastName, :company, :address)
+			]]> 
+		</beans:value>
+		</beans:property>
+		<beans:property name="itemSqlParameterSourceProvider">
+		<beans:bean
+			class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+		</beans:property>
+	</beans:bean>
+	<job id="userIns">
+		<step id="step1">
+			<tasklet transaction-manager="transactionManager">
+				<chunk reader="xmlFileReader" writer="jdbcItemWriter"
+					commit-interval="1" />
+			</tasklet>
+		</step>
+	</job>
+
+</beans:beans>

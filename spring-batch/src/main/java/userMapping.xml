@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<class name="com.example.Users">
+		<field name="users" type="com.test.User" 
+			collection="arraylist">
+			<bind-xml name="user" />
+		</field>
+	</class>
+	<class name="com.example.User">
+		<map-to xml="user" />
+		<field name="firstName" type="string">
+			<bind-xml name="firstName" node="element" />
+		</field>
+		<field name="lastName" type="string">
+			<bind-xml name="lastName" node="element" />
+		</field>
+			<field name="company" type="string">
+			<bind-xml name="company" node="element" />
+		</field>
+			<field name="address" type="string">
+			<bind-xml name="address" node="element" />
+		</field>
+	</class>
+</mapping>		
