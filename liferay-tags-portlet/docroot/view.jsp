@@ -1,3 +1,8 @@
+<%@page import="com.liferay.portal.service.UserLocalServiceUtil"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="javax.portlet.PortletURL"%>
+<%@page import="com.liferay.portal.kernel.portlet.LiferayWindowState"%>
+<%@page import="com.liferay.portlet.journal.model.JournalArticle"%>
 <%@page import="com.liferay.portal.kernel.util.KeyValuePair"%>
 <%@page import="java.util.List"%>
 <%@page import="com.liferay.portal.model.User"%>
@@ -23,7 +28,9 @@
 %>
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
 <%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
+<%@ taglib uri="http://liferay.com/tld/portlet" prefix="liferay-portlet" %>
 <%@ taglib uri="http://liferay.com/tld/theme" prefix="theme" %>
+<%@ taglib uri="http://liferay.com/tld/aui" prefix="aui" %>
 <portlet:defineObjects />
 <theme:defineObjects/>
 
@@ -123,3 +130,49 @@
 	rightReorder="true" 
 	 />
 </div>
+<div style="border-style:solid;border-width:1px;padding:10px;margin:10px;">
+	<b>liferay-ui:input-scheduler</b><br/>
+	<liferay-ui:input-scheduler>
+	</liferay-ui:input-scheduler>
+</div>
+<div style="border-style:solid;border-width:1px;padding:10px;margin:10px;">
+	<b>liferay-ui:input-time</b><br/>
+	<liferay-ui:input-time minuteParam="minute" amPmParam="ampm" hourParam="hour"/>
+</div>
+<div style="border-style:solid;border-width:1px;padding:10px;margin:10px;">
+	<b>liferay-ui:input-time-zone</b><br/>
+	<liferay-ui:input-time-zone name="time"></liferay-ui:input-time-zone>
+</div>
+
+<div style="border-style:solid;border-width:1px;padding:10px;margin:10px;">
+	<b>liferay-ui:input-permission</b><br/>
+	<liferay-ui:input-permissions modelName="<%=User.class.getName() %>"></liferay-ui:input-permissions>
+</div>
+<div style="border-style:solid;border-width:1px;padding:10px;margin:10px;">
+	<b>liferay-ui:input-resource</b><br/>
+	<liferay-ui:input-resource url="http://www.google.com"></liferay-ui:input-resource>
+</div>
+<div style="border-style:solid;border-width:1px;padding:10px;margin:10px;">
+	<b>liferay-ui:asset-links</b><br/>
+	<liferay-ui:asset-links assetEntryId="11706" className="<%=JournalArticle.class.getName() %>" classPK="11704"></liferay-ui:asset-links>
+</div>
+
+<div style="border-style:solid;border-width:1px;padding:10px;margin:10px;">
+	<b>liferay-ui:header</b><br/>
+	<liferay-ui:header title="header"></liferay-ui:header>
+</div>
+
+<div style="border-style:solid;border-width:1px;padding:10px;margin:10px;">
+	<b>liferay-ui:panel</b><br/>
+	<liferay-ui:panel-container accordion="false">
+		<liferay-ui:panel title="Panel1">
+			Panel1 Content
+		</liferay-ui:panel>
+		<liferay-ui:panel title="Panel2">
+			Panel2 Content
+		</liferay-ui:panel>
+	</liferay-ui:panel-container>
+</div>
+
+
+
