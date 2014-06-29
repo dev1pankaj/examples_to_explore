@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.app.logintrack" auto-namespace-tables="true">
+	<author>Pankaj Kathiriya</author>
+	<namespace>LR_APP</namespace>
+
+	<entity name="LoginData" local-service="true" remote-service="false">
+		<!-- PK fields -->
+		<column name="userId" type="long" primary="true" />
+		<column name="loginDate" type="Date" primary="true" />
+		
+		 <finder name="UserId" return-type="Collection">
+            <finder-column name="userId"/>
+        </finder>
+	</entity>
+	
+</service-builder>

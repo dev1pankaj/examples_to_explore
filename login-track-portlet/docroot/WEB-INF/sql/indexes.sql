@@ -1,0 +1,1 @@
+create index IX_F6C6CDDC on LR_APP_LoginData (userId);

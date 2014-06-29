@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="com.app.logintrack.model.impl.LoginDataModelImpl">
+		<id-class class="com.app.logintrack.service.persistence.LoginDataPK" />
+		<attributes>
+			<id name="userId" />
+			<id name="loginDate">
+				<temporal>TIMESTAMP</temporal>
+			</id>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="com.app.logintrack.model.impl.LoginDataImpl" name="LoginData">
+		<table name="LR_APP_LoginData" />
+		<attributes />
+	</entity>
+</entity-mappings>

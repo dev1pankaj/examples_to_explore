@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+
+<project name="login-track-portlet" basedir="." default="deploy">
+	<import file="D:\Others\Liferay\Liferay 6.2 CE GA1\liferay-plugins-sdk-6.2.0\portlets/build-common-portlet.xml" />
+</project>

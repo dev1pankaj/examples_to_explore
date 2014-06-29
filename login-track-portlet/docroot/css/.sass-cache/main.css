@@ -1,0 +1,17 @@
+.login-track-portlet .yui3-calendar-day:hover {
+  background: none !important;
+  color: #000000 !important; }
+
+.login-track-portlet .yui3-calendar-day {
+  cursor: default; }
+
+.login-track-portlet .yui3-calendar-day-selected, .login-track-portlet .yui3-calendar-day-selected:hover {
+  background: none repeat scroll 0 0 #006400  !important;
+  color: #000000 !important; }
+
+.login-track-portlet .yui3-calendarnav-prevmonth, .login-track-portlet .yui3-calendarnav-prevmonth:hover {
+  background: url("01_left.png") !important; }
+
+.login-track-portlet .yui3-calendarnav-nextmonth, .login-track-portlet .yui3-calendarnav-nextmonth:hover {
+  background: url("01_right.png") !important; }
+
