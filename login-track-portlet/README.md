@@ -1,6 +1,7 @@
 LoginTrack App
 ==========
 This is very simple application that displays LoginTrack calendar to the logged-in user.
+
 Now what is logintrack calendar?
 
 LoginTrack calendar displays month-view with green-marked dates, green-marked date indicates that user have logged-in to the
