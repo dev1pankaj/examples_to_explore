@@ -19,4 +19,4 @@ LoginTrack App also contains plugin-portlet, that fetches logindata from custom-
 
 
 
-For any issues, you can reach out to kathririyapankajm@gmail.com 
+For any issues, you can reach out to kathiriyapankajm@gmail.com or pmkathiria@gmail.com
